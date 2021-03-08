@@ -65,7 +65,7 @@ struct AddTodoView: View {
                                     Button(action: {
                                         self.presentationMode.wrappedValue.dismiss()
                                     }){
-                                        Image(systemName: "plus")
+                                        Image(systemName: "xmark")
                                     })
             .alert(isPresented: $errorShowing, content: {
                 Alert(title: Text(errortitle), message: Text(errorMessage), dismissButton: .default(Text("OK")))

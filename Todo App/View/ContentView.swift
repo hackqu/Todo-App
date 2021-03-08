@@ -11,12 +11,26 @@ struct ContentView: View {
     
     @Environment(\.managedObjectContext) var managedObjectContext
     
+    @FetchRequest(entity: Todo.entity(), sortDescriptors: [NSSortDescriptor(keyPath: \Todo.name, ascending: true)]) var todos:FetchedResults<Todo>
+    
     @State private var showingAddTodoView: Bool = false
     
     var body: some View {
         NavigationView{
-            List(0..<5){ item in
-                Text("Hello Word")
+            List{
+                ForEach(self.todos, id: \.self){ todo in
+                    HStack{
+                        Text(todo.name ?? "uknown")
+                        
+                        Spacer()
+                        
+                        Text(todo.priority ?? "uknown")
+                
+                    }
+                }
+                .onDelete(perform: deleteTodo)
+                
+                
             }
             .navigationBarTitle("Todo", displayMode: .inline)
             .navigationBarItems(trailing:
@@ -34,10 +48,27 @@ struct ContentView: View {
         }
         
     }
+    
+    private func deleteTodo(at offsets: IndexSet){
+        for index in offsets {
+            let todo = todos[index]
+            managedObjectContext.delete(todo)
+            
+            do{
+                try managedObjectContext.save()
+            } catch{
+                print(error)
+            }
+        }
+    }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        return  ContentView().environment(\.managedObjectContext, context)
+        
+       
     }
 }
