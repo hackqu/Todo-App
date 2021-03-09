@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FB2AE89425F74EF8000CC16D /* EmptyListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB2AE89325F74EF8000CC16D /* EmptyListView.swift */; };
 		FB63C41025F5D79D00CADD74 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB63C40F25F5D79D00CADD74 /* AppDelegate.swift */; };
 		FB63C41225F5D79D00CADD74 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB63C41125F5D79D00CADD74 /* SceneDelegate.swift */; };
 		FB63C41425F5D79D00CADD74 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB63C41325F5D79D00CADD74 /* ContentView.swift */; };
@@ -18,6 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		FB2AE89325F74EF8000CC16D /* EmptyListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyListView.swift; sourceTree = "<group>"; };
 		FB63C40C25F5D79D00CADD74 /* Todo App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Todo App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB63C40F25F5D79D00CADD74 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FB63C41125F5D79D00CADD74 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -85,6 +87,7 @@
 			children = (
 				FB63C41325F5D79D00CADD74 /* ContentView.swift */,
 				FB63C42825F5D95700CADD74 /* AddTodoView.swift */,
+				FB2AE89325F74EF8000CC16D /* EmptyListView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -161,6 +164,7 @@
 			files = (
 				FB63C41025F5D79D00CADD74 /* AppDelegate.swift in Sources */,
 				FB63C41225F5D79D00CADD74 /* SceneDelegate.swift in Sources */,
+				FB2AE89425F74EF8000CC16D /* EmptyListView.swift in Sources */,
 				FB63C41425F5D79D00CADD74 /* ContentView.swift in Sources */,
 				FB63C41725F5D79D00CADD74 /* Todo_App.xcdatamodeld in Sources */,
 				FB63C42925F5D95700CADD74 /* AddTodoView.swift in Sources */,

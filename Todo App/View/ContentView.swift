@@ -17,33 +17,39 @@ struct ContentView: View {
     
     var body: some View {
         NavigationView{
-            List{
-                ForEach(self.todos, id: \.self){ todo in
-                    HStack{
-                        Text(todo.name ?? "uknown")
-                        
-                        Spacer()
-                        
-                        Text(todo.priority ?? "uknown")
-                
+            ZStack{
+                List{
+                    ForEach(self.todos, id: \.self){ todo in
+                        HStack{
+                            Text(todo.name ?? "uknown")
+                            
+                            Spacer()
+                            
+                            Text(todo.priority ?? "uknown")
+                    
+                        }
                     }
+                    .onDelete(perform: deleteTodo)
+                    
+                    
                 }
-                .onDelete(perform: deleteTodo)
-                
-                
+                .navigationBarTitle("Todo", displayMode: .inline)
+                .navigationBarItems(trailing:
+                                        Button(action: {
+                                            self.showingAddTodoView.toggle()
+                                        }){
+                                            Image(systemName: "plus")
+                                        }
+                    .sheet(isPresented: $showingAddTodoView){
+                        AddTodoView().environment(\.managedObjectContext, self.managedObjectContext)
+                        
+                        
+                    })
+                if todos.count == 0{
+                    EmptyListView()
+                }
             }
-            .navigationBarTitle("Todo", displayMode: .inline)
-            .navigationBarItems(trailing:
-                                    Button(action: {
-                                        self.showingAddTodoView.toggle()
-                                    }){
-                                        Image(systemName: "plus")
-                                    }
-                .sheet(isPresented: $showingAddTodoView){
-                    AddTodoView().environment(\.managedObjectContext, self.managedObjectContext)
-                    
-                    
-                })
+            
             
         }
         
