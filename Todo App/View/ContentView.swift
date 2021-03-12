@@ -14,7 +14,7 @@ struct ContentView: View {
     @FetchRequest(entity: Todo.entity(), sortDescriptors: [NSSortDescriptor(keyPath: \Todo.name, ascending: true)]) var todos:FetchedResults<Todo>
     
     @State private var showingAddTodoView: Bool = false
-    
+    @State private var showingSettingsView: Bool = false
     var body: some View {
         NavigationView{
             ZStack{
@@ -34,14 +34,16 @@ struct ContentView: View {
                     
                 }
                 .navigationBarTitle("Todo", displayMode: .inline)
-                .navigationBarItems(trailing:
-                                        Button(action: {
-                                            self.showingAddTodoView.toggle()
-                                        }){
-                                            Image(systemName: "plus")
-                                        }
-                    .sheet(isPresented: $showingAddTodoView){
-                        AddTodoView().environment(\.managedObjectContext, self.managedObjectContext)
+                .navigationBarItems(
+                    leading: EditButton(),
+                    trailing:
+                        Button(action: {
+                            self.showingSettingsView.toggle()
+                        }){
+                            Image(systemName: "gear")
+                        }
+                    .sheet(isPresented: $showingSettingsView){
+                        SettingsView()
                         
                         
                     })
